@@ -1,0 +1,680 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s linear;
+}
+
+body{
+    /* background: #e6e6e6; */
+}
+
+:root{
+    --dark:rgb(54, 54, 54);
+}
+
+.navbar{
+    background: var(--dark);
+}
+
+.navbar .container nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .container nav .logo a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .container nav .logo{
+    color: white;
+}
+
+.navbar .container nav .search input{
+    padding:0.5rem 2rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    outline: none;
+}
+
+.navbar .container nav .user-comp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .container nav .user-comp .user-profile img{
+    border-radius: 2rem;
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+}
+
+.navbar .container nav .user-comp div{
+    margin:0 1rem;
+    color: white;
+}
+
+.navbar .container nav .user-comp div i{
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.navbar .container nav .user-comp .notification{
+
+}
+
+.navbar .container nav .user-comp .notification .dropdown-menu{
+    margin-top: 1rem;
+}
+
+.navbar .container nav .user-comp .notification .dropdown ul{
+    list-style: none;
+}
+
+.navbar .container nav .user-comp .notification .dropdown ul li{
+    margin: 1rem 0;
+}   
+
+.navbar .container nav .user-comp .notification .dropdown ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+/* section myprofile start here */
+
+.profile{
+    padding: 2rem 0;
+}
+
+.profile .container{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;   
+}
+
+.profile .container .profile-img{
+    width: 40%;
+}
+
+.profile .container .profile-img img{
+    width: 17rem;
+    height: 17rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile .container .profile-info{
+    padding: 1rem 0;
+    width: 50%;
+}
+
+.profile .container .profile-info .first-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.profile .container .profile-info .first-row a{
+    background: var(--dark);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.3rem;
+}
+
+.profile .container .profile-info .second-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.profile .container  .profile-info .third-row{
+    padding-bottom: 1rem;
+}
+
+.profile .container .profile-info .fourth-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.profile .container .profile-info .fourth-row span{
+    background: var(--dark);
+    padding: 0 1rem;
+    color: #fff;
+    border-radius: 0.3rem;
+}
+
+.profile .container .profile-info .fifth-row span{
+    background: var(--dark);
+    padding: 0 1rem;
+    color: #fff;
+    border-radius: 0.3rem;
+}
+
+.profile .container .profile-info .fifth-row .modal .modal-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile .container .modal .modal-body{
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile .container .profile-info #allfriend .modal-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile .container .modal .modal-body .image-content{
+    margin: 1rem;
+}
+
+.profile .container .modal .modal-body .image-content img{
+    width: 12rem;
+}
+
+.post #commentmodal .modal-body{
+    display: flex;
+    justify-content: space-around;
+}
+
+.post #commentmodal .modal-body .comment-content{
+    padding: 1rem;
+    border-right: .1rem solid rgba(0, 0, 0, 0.1);
+}
+
+.post #commentmodal .modal-body .form-container{
+    padding: 1rem;
+}
+
+.post #commentmodal .modal-body .profile-content{
+    display: flex;
+}
+
+.post #commentmodal .modal-body .image-content{
+    margin: 1rem;
+}
+
+.post #commentmodal .modal-body .image-content img{
+    width: 12rem;
+} 
+
+/* section myprofile end here */
+
+
+.post .post-container{
+    margin: auto;
+}
+
+.post .post-container .card .card-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.post .post-container .card .card-header .post-info img{
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    border-radius: 2rem;
+    margin:0 1rem;
+}
+
+.post .post-container .card .card-header .post-option a{
+    border-radius: 5rem;
+    padding:0.5rem 1rem;
+}
+
+.post .post-container .card .card-header .post-option a:hover{
+    background: rgb(204, 204, 204);
+}
+
+.post .post-container .card .card-header .post-option i{
+    color: var(--dark);
+}
+
+
+.post .post-container .card .card-body{
+    padding: 1rem;
+}
+
+.post .post-container .card .card-body .content-footer{
+    margin-top: 1rem ;
+    display: flex;
+}
+
+.post .post-container .card .card-body .content-footer .like{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 3rem;
+    text-align: center;
+}
+.post .post-container .card .card-body .content-footer .like button{
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.post .post-container .card .card-body .content-footer .like i{
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.post .post-container .card form .comment_form{
+    display: flex;
+}
+
+.post .modal .modal-body .all-comments{
+    position: relative;
+    height: 22rem;
+}
+
+.post .modal .modal-body .all-comments .comment-container{
+    height: 22rem;
+    overflow: scroll;
+    margin: 0 1rem;
+}
+
+.post .modal .modal-body .all-comments .comment-fm{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.post .modal .modal-body .all-comments .comment-fm form .comment_form{
+    display: flex;
+    /* background: #000; */
+}
+
+.post .post-container .card .card-body .content-footer .comment button{
+    width: 3rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-bottom: 1.2rem;
+}
+
+.post .post-container .card .card-body .content-footer .comment button i{
+    font-size: 1.3rem;
+}
+
+.post .post-container .card .card-body .content-footer .share button{
+    width: 3rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-bottom: 1.2rem;
+}
+
+.post .post-container .card .card-body .content-footer .share button i{
+    font-size: 1.3rem;
+}
+
+
+
+
+
+.detail{
+    padding: 2rem 0;
+}
+
+.detail .container{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.detail .container .profile-img{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.detail .container .profile-img .image{
+    width: 17rem;
+    background: #000;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.detail .container .profile-img .requests{
+    margin: 1rem 0;
+}
+
+.detail .container .profile-img .requests button{
+    width: 100%;
+}
+
+.detail .container .profile-img .image img{
+    height: 17rem;
+    width: 17rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.detail .container .profile-info{
+    padding: 1rem 0;
+    width: 50%;
+}
+
+.detail .container .profile-info .first-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.detail .container .profile-info .first-row a{
+    background: var(--dark);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.3rem;
+}
+
+.detail .container .profile-info .second-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.detail .container  .profile-info .third-row{
+    padding-bottom: 1rem;
+}
+
+.detail .container .profile-info .fourth-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.detail .container .profile-info .fourth-row span{
+    background: var(--dark);
+    padding: 0 1rem;
+    color: #fff;
+    border-radius: 0.3rem;
+}
+
+.detail .container .profile-info .fifth-row span{
+    background: var(--dark);
+    padding: 0 1rem;
+    color: #fff;
+    border-radius: 0.3rem;
+}
+
+
+.profile_list .card .row .col-4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile_list .card .row .col-4 img{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 10rem;
+    object-fit: cover;
+}
+
+.profile_list .card .row .col-8{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.my-invites .card .row .col-4{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-invites .card .row .col-4 img{
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.my-invites .card .row .col-8{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.my-invites .card .row .col-8 .user-invites{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+
+.signup{
+    height: 100vh;
+    width: 100vw;
+}
+
+.signup .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.signup .container .signup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.signup .container .signup-container .signup-form{
+    border: .1rem solid rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 30rem;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.4);
+
+}
+
+.signup .container .signup-container .signup-form form input{
+    width: 100%;
+    border: .1rem solid rgba(0, 0, 0, 0.1);
+    padding:0.5rem 1rem;
+    border-radius: 5rem;
+    outline: none;
+}
+
+.signup .container .signup-container .signup-form form input[type='submit']{
+    background: var(--dark);
+    color: #fff;
+}
+
+.signup .container .signup-container .signup-form form input:focus{
+    border: .1rem solid rgb(113, 148, 255);
+}
+
+.signup .container .signup-container .signup-form .social-auth{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signup .container .signup-container .signup-form .social-auth .google{
+    width: 45%;
+}
+
+.signup .container .signup-container .signup-form .social-auth .google a{
+    width: 100%;
+    border-radius: 2rem;
+}
+
+.signup .container .signup-container .signup-form .social-auth .facebook a{
+    width: 100%;
+    border-radius: 2rem;
+}
+
+.signup .container .signup-container .signup-form .social-auth .facebook{
+    width: 45%;
+}
+
+.signup .container .signup-container .signup-form .social-auth .facebook span{
+    padding: 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.signup .container .signup-container .signup-form .social-auth .google span{
+    padding: 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width:415px){
+    .signup .container .signup-container .signup-form .social-auth{
+        flex-direction: column;
+    }    
+    .signup .container .signup-container .signup-form .social-auth .google{
+        width: 100%;
+        margin: .5rem 0;
+    }
+    .signup .container .signup-container .signup-form .social-auth .facebook{
+        width: 100%;
+        margin: .5rem 0;
+    }
+}
+
+
+
+
+@media screen and (max-width:1000px) {
+    .profile .container{
+        flex-direction: column;
+        width: 100%;
+    }
+    .profile .container .profile-img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .profile .container .profile-img img{
+        height: 10rem;
+        width: 10rem;
+    }
+    .profile .container .profile-info{
+        width: 100%;
+    }
+    .profile .container .modal .modal-body{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    .profile .container .modal .modal-body .image-content{
+        margin:1rem auto;
+    }
+
+    .detail .container{
+        flex-direction: column;
+        width: 100%;
+    }
+    .detail .container .profile-img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .detail .container .profile-img img{
+        height: 10rem;
+        width: 10rem;
+    }
+    .detail .container .profile-info{
+        width: 100%;
+    }
+    .detail .container .modal .modal-body{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    .detail .container .modal .modal-body .image-content{
+        margin:1rem auto;
+    }
+    .my-invites .card{
+        width: 100% !important;
+    }
+    .my-invites .card .row{
+        display: flex;
+        justify-content: space-between;
+    }
+    .my-invites .card .row .col-4 img{
+        height: 10rem;
+        width: 10rem;
+    }
+    .my-invites .card .row .col-4{
+        flex-direction: column;
+    }
+    .post #commentmodal .modal-body{
+        flex-direction: column;
+    }
+    .post #commentmodal .modal-body .comment-content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-bottom: .1rem solid rgba(0, 0, 0, 0.1);
+    }
+    .post #commentmodal .modal-body .all-comments{
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+}
+
+
+@media screen and (max-width:700px){
+    .search{
+        display: none;
+    }
+    .profile_list .card{
+        width: 100% !important;
+    }
+    html{
+        font-size: 80%;
+    }
+}
+
+@media screen and (max-width:500px){
+    .search{
+        display: none;
+    }
+    .profile_list .card{
+        width: 100% !important;
+    }
+    html{
+        font-size: 70%;
+    }
+}

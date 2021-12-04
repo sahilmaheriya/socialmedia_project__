@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="detail">
+
+    <div class="container">
+        <div class="profile-img">
+            <div class="image">
+                <img src="{{profile.avatar.url}}" alt="">
+            </div>
+            <div class="requests">
+                {% if object.user not in rel_receiver and object.user not in rel_sender %}
+                <form action="{% url 'send-invite' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_pk" value={{object.pk}}>
+                    <button type="submit" class="btn btn-primary">Add to friends</button>
+                </form>
+                {% endif %}
+    
+                {% if object.user in rel_receiver and request.user not in object.friends.all %}
+                <button class="btn btn-primary">Waiting for response</button>
+                {% endif %}
+    
+    
+    
+                {% if request.user in object.friends.all %}
+                <form action="{% url 'remove-friend' %}" method='POST'>
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_pk" value="{{object.pk}}">
+                    <button type="submit" class="btn btn-primary">remove from friends</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        <div class="profile-info">
+            <div class="first-row">
+                <h4>{{object.user}}</h4>
+            </div>
+            {% if profile.first_name and profile.last_name %}
+            <div class="second-row">
+                <h4> {{profile.first_name}} </h4>
+                <h4> {{profile.last_name}} </h4>
+            </div>
+            {% endif %}
+            <div class="third-row">
+                <h5> {{profile.bio}} </h5>
+            </div>
+            <div class="fourth-row">
+                <h4> Friends <span>{{profile.get_friends_no}} </span> </h4>
+                <h4>All Friends </h4>
+            </div>
+            <div class="fifth-row">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#profile-details-modal">
+                    more details
+                </button>
+                <div class="modal fade" id="profile-details-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h4> Number of Posts <span>{{profile.get_posts_no}} </span> </h4> <br>
+                                <h4> Number of likes given <span>{{profile.get_likes_given_no}} </span> </h4> <br>
+                                <h4> Number of likes recieved <span>{{profile.get_likes_received_no}} </span> </h4>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock content %}

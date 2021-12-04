@@ -1,0 +1,64 @@
+{% load static %}
+
+{% url 'main_post_view' as path_to_posts %}
+{% url 'home' as path_to_home %}
+{% url 'my_profile' as path_to_my_profile %}
+{% url 'my-invites-view' as path_to_my_invites %}
+{% url 'invite-profiles-view' as path_to_invites %}
+{% url 'all-profiles-view' as path_to_all_profiles %}
+
+<section class="navbar py-3">
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="{{path_to_posts}}" class="">
+                    <h4>SOCIAL SITE</h4>
+                </a>
+            </div>
+            <div class="search">
+                <input type="text" name="search" id="search" placeholder="search here">
+            </div>
+            <div class="user-comp">
+                <div class="notification btn-group">
+                
+                {% if invites_num %}
+                <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                </span>
+                {% endif %}
+                    
+                    <a href="" class="" id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-display="static">
+                        <i class="fas fa-bell"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="{{path_to_all_profiles}}">
+                                All Profiles
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{path_to_invites}}">
+                                Send Invites
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item " href="{{path_to_my_invites}}">
+                                Recieved Invites <span class="badge bg-secondary">{{invites_num}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="create-post">
+                    <a href="" class="" data-bs-toggle="modal" data-bs-target="#createpost">
+                    <i class="fas fa-plus-circle"></i>
+                    </a>
+                </div>
+                <div class="user-profile">
+                        <a href="{{path_to_my_profile}}">
+                            <img src="{{picture.url}}" alt="">
+                        </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</section>

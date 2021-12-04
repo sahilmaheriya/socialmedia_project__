@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+My Profile
+{% endblock title %}
+
+
+{% block content %}
+
+<section class="profile">
+
+
+  {% if confirm %}
+
+  <div class="alert alert-success d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+      <use xlink:href="#check-circle-fill" />
+    </svg>
+    <div>
+      An example success alert with an icon
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="container">
+    <div class="modal fade" id="updateprofile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update Your Profile</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="image-content">
+              <img src="{{profile.avatar.url}}" alt="">
+            </div>
+            
+            <div class="form-container">
+              <form action="" method='post' , enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col">
+                    {{form.first_name}}
+                  </div>
+                  <div class="col">
+                    {{form.last_name}}
+                  </div>
+                </div> <br>
+                {{form.bio}} <br>
+                {{form.avatar}} <br>
+                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Update</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </form>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-img">
+      <img src="{{profile.avatar.url}}" alt="">
+    </div>
+    <div class="profile-info">
+      <div class="first-row">
+        <h4>{{profile.user}}</h4>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#updateprofile">update profile</a>
+      </div>
+      {% if profile.first_name and profile.last_name %}
+      <div class="second-row">
+        <h4> {{profile.first_name}} </h4>
+        <h4> {{profile.last_name}} </h4>
+      </div>
+      {% endif %}
+      <div class="third-row">
+        <h4> {{profile.bio}} </h4>
+      </div>
+      <div class="fourth-row">
+        <h4> Friends <span>{{profile.get_friends_no}} </span> </h4>
+        <a href="" data-bs-toggle="modal" data-bs-target="#allfriend">
+          <h4>All Friends</h4>
+        </a>
+      </div>
+      <div class="modal fade" id="allfriend" tabindex="-1" aria-labelledby="allfriend" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">All Friends</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              {% if profile.get_friends %}
+                {% for friends in profile.get_friends %}
+                  <div class="card my-2 p-2"> 
+                    {{friends}}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fifth-row d-flex justify-content-between">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profile-details-modal">
+          More Details
+        </button>
+        <a href="{% url 'logout' %}" class='btn btn-primary'>Logout</a>
+        <div class="modal fade" id="profile-details-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">More Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h4> Number of Posts <span>{{profile.get_posts_no}} </span> </h4> <br>
+                <h4> Number of likes given <span>{{profile.get_likes_given_no}} </span> </h4> <br>
+                <h4> Number of likes recieved <span>{{profile.get_likes_received_no}} </span> </h4> <br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

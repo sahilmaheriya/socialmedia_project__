@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+posts
+
+{% endblock title %}
+
+
+{% block content %}
+
+
+<section class="post">
+  <div class="modal fade" id="createpost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">write your post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-container">
+            <form action="" method='post' enctype="multipart/form-data">
+              {% csrf_token %}
+              {{post_form}}
+              <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" name="submit_p_form">Upload
+                post</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </form>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-container col-lg-8 my-4">
+    {% for obj in qs %}
+
+    <div class="modal fade" id="commentmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Comment section</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body row">
+            <div class="comment-content col-4">
+              <div class="image-content">
+                <img src="{{profile.avatar.url}}" alt="">
+              </div>
+              <div class="body-content">
+                {{obj.content}}
+              </div>
+            </div>
+
+            <div class="all-comments col-8">
+              <div class="comment-container">
+                {% if obj.comment_set.all %}
+                  {% for c in obj.comment_set.all %}
+                    {{c.body}} <br>
+                  {% endfor %}
+                {% else %}
+                  <h3>Sorry, Not any of comment yet!</h3>
+                {% endif %}
+              </div>
+              <div class="comment-fm">
+                <form action="" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="post_id" value={{obj.id}}>
+                  <div class="comment_form">
+                    {{comment_form}}
+                    <input type="submit" value="submit" class="btn btn-primary" name="submit_c_form">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="card my-4">
+        <div class="card-header">
+          <div class="post-info">
+            <img src="{{obj.author.avatar.url}}" alt=""> {{obj.author.user}} - {{obj.created|timesince}} ago
+          </div>
+          <div class="post-option">
+
+          {% ifequal request.user obj.author.user  %}
+            <a href="{% url 'post-delete' obj.pk %}"><i class="far fa-trash-alt"></i></a>
+            <a href="{% url 'post-update' obj.pk %}"><i class="far fa-edit"></i></a>
+          {% endifequal %}
+            
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="content">
+            <img src="{{obj.image.url}}" alt="" class="img-fluid">
+            {{obj.content}}
+          </div>
+          <div class="content-footer">
+            <div class="like">
+              <form action="{% url 'like_unlike_post' %}" method="POST" class="like-form" id="{{obj.id}}">
+                {% csrf_token %}
+                <input type="hidden" name="post_id" value="{{obj.id}}">
+                {% if profile not in obj.liked.all %}
+                <button type="submit"><i class="far fa-heart {{obj.id}}"></i></button>
+                {% else %}
+                <button type="submit"><i class="far fa-heart bg-dark {{obj.id}} "></i></button>
+                {% endif %}
+              </form>
+              <span> {{obj.num_likes}} </span>
+            </div>
+            <div class="comment">
+              <button data-bs-toggle="modal" data-bs-target="#commentmodal"><i class="far fa-comment"></i></button>
+            </div>
+            <div class="share">
+              <button><i class="far fa-share-square"></i></button>
+            </div>
+          </div>
+        </div>
+        <form action="" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="post_id" value={{obj.id}}>
+          <div class="comment_form">
+            {{comment_form}}
+            <input type="submit" value="submit" class="btn btn-primary" name="submit_c_form">
+          </div>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</section>
+
+{% endblock content %}
+
+
+{% block scripts %}
+
+
+{% endblock scripts %}
